@@ -24,8 +24,55 @@
     , ...
     }:
     {
+      programs.workstyle = {
+        enable = true;
+        settings = {
+          alacritty = "";
+          github = "";
+          rust = "";
+          google = "";
+          firefox = "";
+          zen = "";
+          chrome = "";
+          chromium = "";
+          nnn = "";
+          "file manager " = "";
+          "libreoffice calc" = "󱎏";
+          "libreoffice writer" = "";
+          libreoffice = "󰏆";
+          nvim = "";
+          gthumb = "";
+          menu = "󰍜";
+          calculator = "";
+          transmission = "";
+          qbittorrent = "";
+          videostream = "";
+          mpv = "";
+          music = "󰝚";
+          "disk usage" = "";
+          ".pdf" = "";
+          steam = "󰓓";
+          heroic = "󰊗";
+          games = "󰊗";
+          corectrl = "";
+          godot = "";
+          blender = "󰂫";
+          wine = "󰡶";
+          discord = "󰙯";
+          mattermost = "󰭹";
+          thunderbird = "";
+          other = {
+            fallback_icon = "󰘔";
+            separator = ": ";
+          };
+
+        };
+      };
+
+
       wayland.windowManager.sway = {
         enable = true;
+        # package = pkgs.swayfx;
         extraSessionCommands = ''
           export XDG_SESSION_TYPE=wayland
           export SDL_VIDEODRIVER=wayland
@@ -44,8 +91,8 @@
           };
           bars = [ ];
           startup = [
-            { command = "${pkgs.workstyle}/bin/workstyle"; always = true; }
-            { command = "${inputs.ashell-sway.packages.${pkgs.stdenv.hostPlatform.system}.default}/bin/ashell"; always = true; }
+            { command = "${pkgs.workstyle}/bin/workstyle"; }
+            { command = "${inputs.ashell-sway.packages.${pkgs.stdenv.hostPlatform.system}.default}/bin/ashell"; }
           ];
           input = {
             "type:keyboard" = {
@@ -65,6 +112,12 @@
               accel_profile = "flat";
             };
           };
+          gaps = {
+            left = 4;
+            right = 4;
+            bottom = 2;
+            top = 2;
+          };
           keybindings =
             let
               modifier = config.wayland.windowManager.sway.config.modifier;
@@ -76,9 +129,13 @@
               "${modifier}+d" = "exec wofi --show drun";
               "${modifier}+0" = "workspace number 0";
               "${modifier}+Shift+0" = "move container to workspace number 0";
+              "${modifier}+Alt+l" = "exec swaylock";
+              "XF86PowerOff" = "exec sh -c 'swaylock -f && systemctl suspend'";
             };
-
         };
+        # extraConfig = ''
+        #   corner_radius 4
+        # '';
       };
 
     };

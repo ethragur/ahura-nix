@@ -38,6 +38,7 @@
       };
 
       stylix.targets.swaylock.enable = true;
+      stylix.targets.swaylock.image.enable = true;
 
       programs.swaylock = {
         enable = true;
@@ -52,6 +53,12 @@
           indicator-caps-lock = true;
         };
       };
+
+
+      stylix.targets.mako.enable = true;
+      services.mako = { enable = true; };
+
+      stylix.targets.ashell.enable = true;
 
       programs.ashell = {
         enable = true;
@@ -115,7 +122,6 @@
           };
         };
       };
-      stylix.targets.ashell.enable = true;
     };
 }
 

@@ -55,6 +55,7 @@
         htop
         unrar
         jq
+        comma
       ];
 
       # Make /etc/hosts editable
