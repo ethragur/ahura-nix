@@ -22,6 +22,7 @@
     , ...
     }:
     {
+      stylix.targets.gtk.flatpakSupport.enable = false;
       programs.wofi = {
         enable = true;
         settings = {
@@ -52,6 +53,11 @@
           indicator-thickness = 256;
           indicator-caps-lock = true;
         };
+      };
+
+
+      services.kanshi = {
+        enable = true;
       };
 
 

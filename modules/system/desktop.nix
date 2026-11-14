@@ -38,6 +38,8 @@
             settings = {
               screencast = {
                 max_fps = 30;
+                chooser_type = "simple";
+                chooser_cmd = "${pkgs.slurp}/bin/slurp -f 'Monitor: %o' -or";
               };
             };
           };
@@ -47,15 +49,25 @@
             xdg-desktop-portal-wlr
             xdg-desktop-portal-gtk
           ];
-          config = {
-            common = {
-              default = [
-                "gtk"
-              ];
-            };
+
+          config.common = {
+            default = [ "gtk" ];
+
+            "org.freedesktop.impl.portal.ScreenCast" = [ "wlr" ];
+            "org.freedesktop.impl.portal.Screenshot" = [ "wlr" ];
           };
+          config.sway = {
+            default = [ "gtk" ];
+
+            "org.freedesktop.impl.portal.ScreenCast" = [ "wlr" ];
+            "org.freedesktop.impl.portal.Screenshot" = [ "wlr" ];
+          };
+
         };
       };
+
+      systemd.user.settings.Manager.ManagerEnvironment =
+        "NIX_XDG_DESKTOP_PORTAL_DIR=/run/current-system/sw/share/xdg-desktop-portal/portals";
 
 
     };

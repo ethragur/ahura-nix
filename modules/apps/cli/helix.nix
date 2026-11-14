@@ -34,6 +34,7 @@
             { name = "yaml"; file-types = [ "yaml" "yml" ]; language-servers = [ "yaml-language-server" ]; indent = { tab-width = 4; unit = ""; }; }
             { name = "python"; language-servers = [ "pylsp" ]; indent = { tab-width = 4; unit = ""; }; }
             { name = "rust"; language-servers = [ "rust-analyzer" ]; indent = { tab-width = 4; unit = ""; }; }
+            { name = "go"; language-servers = [ "gopls" ]; indent = { tab-width = 4; unit = ""; }; }
             { name = "php"; language-servers = [ "phpactor" ]; indent = { tab-width = 4; unit = ""; }; }
             { name = "nickel"; language-servers = [ "nls" ]; indent = { tab-width = 4; unit = ""; }; }
             { name = "elixir"; file-types = [ "ex" "exs" "heex" ]; roots = [ "mix.exs" ]; comment-token = "#"; scope = "source.elixir"; auto-format = true; language-servers = [ "elixir-ls" ]; indent = { tab-width = 2; unit = " "; }; }
@@ -56,6 +57,10 @@
             };
             elixir-ls = {
               command = "${pkgs.elixir-ls}/bin/elixir-ls";
+              auto-format = true;
+            };
+            gopls = {
+              command = "${pkgs.gopls}/bin/gopls";
               auto-format = true;
             };
             rust-analyzer = {
